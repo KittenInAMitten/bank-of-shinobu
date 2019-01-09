@@ -1,5 +1,5 @@
 {
-  "name": "Bank of Shinobu",
+  "name": "Bank-of-Shinobu",
   "version": "0.0.1",
   "description": "Discord Simple From Scratch Bot",
   "main": "bot.js",
@@ -13,17 +13,18 @@
   "author": "KittenInAMitten",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.3.2",
-    "express": "^4.16.3",
-    "ytdl-core": "^0.21.1",
-    "node-opus": "^0.3.0",
-    "bufferutil": "^4.0.0",
-    "sodium": "^2.0.3",
+    "discord.js": "^11.4.2",
+    "express": "^4.16.4",
+    "ytdl-core": "^0.29.0",
+    "node-opus": "^0.3.1",
+    "bufferutil": "^4.0.1",
+    "sodium": "^3.0.2",
     "libsodium-wrappers": "^0.7.3",
-    "uws": "^10.148.2",
+    "uws": "^99.0.0",
     "erlpack": "^0.1.2",
     "opusscript": "^0.0.6",
-    "moment": "^2.22.2",
-    "file-system": "^2.2.2"
+    "moment": "^2.23.0",
+    "file-system": "^2.2.2",
+    "moment-timezone": "^0.5.23"
   }
 }
