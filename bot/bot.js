@@ -16,18 +16,18 @@ setInterval(() => {
 
 //Variables being set
 const Discord = require('discord.js');
-const moment = require('moment');
+const moment = require('moment-timezone'); //moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz");
 const fs = require('fs');
 const commands =  require('./commands.js');
 const userData = require('./data/userData.json');
 const serverData = require('./data/serverData.json');
 const bot = new Discord.Client({disableEveryone: true});
-const prefix = "k10 ";
+const prefix = "donut ";
 
 //Bot set up for when it goes active
 bot.on('ready', () => {
   console.log(`Bot: ${bot.user.username} has successfully activated!`);
-  bot.user.setActivity('you sleep | k10 help', { type: 'WATCHING' })
+  bot.user.setActivity('Soft Loli Breathing', { type: 'LISTENING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
   .catch(console.error);
 });
@@ -36,8 +36,10 @@ bot.on('guildCreate', guild =>{
   serverData[guild.id] = {
     "serverID": guild.id,
     "serverName": guild.name,
+    "bankChannel" : "",
     "serverOwnerID": guild.ownerID,
-    "currentBucks": 0
+    "currentBucks": 0,
+    "admins" : ["163367723152310272"]
   }
 	fs.writeFile('/app/bot/data/serverData.json', JSON.stringify(serverData, null, 2), function (err) {
 		if (err) return console.log(err);
@@ -88,7 +90,9 @@ bot.on('message', async message => {
       "username": bot.users.get(message.author.id).username,
       "id": message.author.id,
       "bucks": 0,
-      "coins": 0
+      "coins": 0,
+      "deposit": 0,
+      "latestDeposit": "None"
     }
 		fs.writeFile('/app/bot/data/userData.json', JSON.stringify(userData, null, 2), function (err) {
 			if (err) return console.log(err);
@@ -107,11 +111,81 @@ bot.on('message', async message => {
   switch(command){
       //TESTING COMMAND
     case "test":
-      if(message.author.id !== "163367723152310272"){
+      if(!serverData[message.guild.id].admins.includes(message.author.id)){
         message.reply("you ain't my daddy!");
         break;
       }
       let test = commands.test(message, args, bot);
+      break;
+      //set bank channel
+    case "setchannel":
+      if(!serverData[message.guild.id].admins.includes(message.author.id)){
+        message.reply("you ain't my daddy!");
+        break;
+      }
+      let channel = commands.channel(message, args, bot);
+      break;
+      //add admin
+    case "addadmin":
+      if(message.author.id !== "163367723152310272" && message.author.id !== "219692709147836426"){
+        message.reply("you've been given the big gay.");
+        break;
+      }
+      let addAdmin = commands.addAdmin(message, args, bot);
+      break;
+      //remove admin
+    case "removeadmin":
+      if(message.author.id !== "163367723152310272" && message.author.id !== "219692709147836426"){
+        message.reply("you've been given the big gay.");
+        break;
+      }
+      let removeAdmin = commands.removeAdmin(message, args, bot);
+      break;
+      //give bucks
+    case "givebucks":
+      if(!serverData[message.guild.id].admins.includes(message.author.id)){
+        message.reply("no.");
+        break;
+      }
+      let giveBucks = commands.giveBucks(message, args, bot);
+      break;
+      //take bucks
+    case "takebucks":
+      if(!serverData[message.guild.id].admins.includes(message.author.id)){
+        message.reply("no.");
+        break;
+      }
+      let takeBucks = commands.takeBucks(message, args, bot);
+      break;
+      //check bucks
+    case "check":
+      let check = commands.check(message, args, bot);
+      break;
+      //convert coins to bucks
+    case "convert":
+      let convert = commands.convert(message, args, bot);
+      break;
+      //give bucks
+    case "givecoins":
+      if(!serverData[message.guild.id].admins.includes(message.author.id)){
+        message.reply("no.");
+        break;
+      }
+      let giveCoins = commands.giveCoins(message, args, bot);
+      break;
+      //take bucks
+    case "takecoins":
+      if(!serverData[message.guild.id].admins.includes(message.author.id)){
+        message.reply("no.");
+        break;
+      }
+      let takeCoins = commands.takeCoins(message, args, bot);
+      break;
+    case "transfer":
+      let transfer = commands.transfer(message, args, bot);
+      break;
+    case "changelog":
+      let changelog = commands.changelog(message, args, bot);
       break;
     default: 
       const youFailed = await message.reply("that isn't a command!");
