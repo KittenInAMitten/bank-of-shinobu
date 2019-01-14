@@ -51,7 +51,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .addField("ACTION DETECTED!", `<@${message.author.id}> has added <@${args[0].replace(/[<@>]/g, '')}> to Admins.`);
     bot.channels.get(serverData[message.guild.id].channel).send(embed);
@@ -81,7 +82,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .addField("ACTION DETECTED!", `<@${message.author.id}> has removed <@${args[0].replace(/[<@>]/g, '')}> from Admins.`);
     bot.channels.get(serverData[message.guild.id].channel).send(embed);
@@ -129,7 +131,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .setImage("https://cdn.discordapp.com/attachments/490664566427090954/532446633821208576/154691771458235348.png")
       .addField("ACTION DETECTED!", `The Bank has given ${amount} Shinobu Bucks to <@${user}>.\n<@${message.author.id}> initiated the command.`);
@@ -182,7 +185,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .setImage("https://cdn.discordapp.com/attachments/490664566427090954/532446633821208576/154691771458235348.png")
       .addField("ACTION DETECTED!", `The Bank has taken ${amount} Shinobu Bucks from <@${user}>.\n<@${message.author.id}> initiated the command.`);
@@ -216,6 +220,7 @@ module.exports = {
       .setColor(1438719)
       .setThumbnail(`${bot.users.get(optionUser).avatarURL}`)
       .setAuthor("PROFILE CHECK", `${bot.users.get(optionUser).avatarURL}`)
+      .setTimestamp()
       .setTitle(`${bot.users.get(optionUser).username}'s Profile`)
       .addField("SHINOBU BUCKS", `${userData[optionUser].bucks}`,true)
       .addField("HACHIKUJI COINS", `${userData[optionUser].coins}`,true)
@@ -247,7 +252,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .setImage("https://cdn.discordapp.com/attachments/490664566427090954/532446629001691166/ShinobuOneDollarandcoin.png")
       .addField("ACTION DETECTED!", `<@${message.author.id}> has converted ${conversion} Hachikuji Coins into ${converted} Shinobu Bucks.`);
@@ -297,7 +303,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .setImage("https://cdn.discordapp.com/attachments/490664566427090954/532446635146477578/invert.png")
       .addField("ACTION DETECTED!", `The Bank has given ${amount} Hachikuji Coins to <@${user}>.\n<@${message.author.id}> initiated the command.`);
@@ -350,7 +357,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .setImage("https://cdn.discordapp.com/attachments/490664566427090954/532446635146477578/invert.png")
       .addField("ACTION DETECTED!", `The Bank has taken ${amount} Hachikuji Coins from <@${user}>.\n<@${message.author.id}> initiated the command.`);
@@ -409,7 +417,8 @@ module.exports = {
     
     var embed = new Discord.RichEmbed()
       .setColor(1438719)
-      .setFooter(`Date of Action: ${moment().tz("America/Edmonton").format("dddd, MMMM Do YYYY, h:mm:ss a zz")} - Displayed in Edmonton Time`)
+      .setFooter(`Date of Action:`)
+      .setTimestamp()
       .setAuthor("Shinobu", `${bot.user.avatarURL}`)
       .setImage("https://cdn.discordapp.com/attachments/490664566427090954/532446629001691166/ShinobuOneDollarandcoin.png")
       .addField("ACTION DETECTED!", `<@${user}> has transferred ${amount} Shinobu Bucks to <@${otherUser}>, who has received ${coinsAmount} Hachikuji Coins.`);
@@ -430,6 +439,7 @@ module.exports = {
     .setColor(1438719)
     .setDescription(log.description)
     .setFooter("If there is anything wrong with the bot, contact Kitten!")
+    .setTimestamp()
     .addField("NEW COMMANDS",log.addcommands)
     .addField("UPDATED COMMANDS",log.updatecommands)
     .addField("BUG FIXES",log.bugs)

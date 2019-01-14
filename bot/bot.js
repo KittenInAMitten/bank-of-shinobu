@@ -27,7 +27,7 @@ const prefix = "donut ";
 //Bot set up for when it goes active
 bot.on('ready', () => {
   console.log(`Bot: ${bot.user.username} has successfully activated!`);
-  bot.user.setActivity('you...', { type: 'WATCHING' })
+  bot.user.setActivity('Soft Loli Breathing', { type: 'LISTENING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
   .catch(console.error);
 });
